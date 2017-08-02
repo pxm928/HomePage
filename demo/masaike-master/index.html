@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+	<title></title> 
+	<style type="text/css">
+	  body{
+/*           background:#b8b1b1; */
+       background:white;
+	  }
+     #myCanvas{
+        display:block;
+        margin:70px 50px;
+     }
+     /*******图片上传按钮******/
+      .fileBtn {
+          box-sizing: border-box;
+         /*  width: 200px; */
+         /*  height: 50px; */
+          font: 20px/50px "宋体";
+          text-align: center;
+          margin:20px auto;
+          border-radius: 8px;
+         
+        }
+        .fileBtn input{
+           display:block;
+           text-align: center;
+           margin:auto;
+        }
+     /*滑块组件开始布局*/
+      .slideBar {
+            margin: 50px auto;
+            width: 350px;
+            height: 10px;
+            background: rgba(173, 216, 230, 1);
+            border-radius: 5px;
+            position: relative;
+        }
+        .slideBar .slider {
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 0, 230, .2); 
+
+            position: absolute;
+            top: -5px;
+            left: -10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .slideBar .sliderProcess {
+            width: 0px;
+            height: 10px;
+            background: rgba(173, 216, 0, 1);
+            border-radius: 5px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .tips {
+            position: absolute;
+            top: -32px;
+            left: -18px;
+            background: rgba(0,0,0,.8);
+            width: 46px;
+            line-height: 16px;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            display: none;
+        }
+       /*滑块组件布局结束*/
+	</style>
+	 <script type="text/javascript">
+   window.onload=function(){
+
+  
+     var file=document.querySelector("#file");
+     var image=null;
+     var lastNum=1;
+       file.onchange=function(e) {  
+            var file = e.target.files[0];  
+            if(window.FileReader) {  
+                var fr = new FileReader(); 
+                fr.readAsDataURL(file);   
+                //图片数据解析完再执行
+                fr.onload = function(e) {  
+                    var oImg=new Image();
+                    oImg.src= e.target.result; 
+
+                     oImg.onload=function(){
+                           image=this;
+                           draw(this,1);
+                      }  
+
+                } 
+               
+            }  
+        } 
+
+
+         function draw(obj,size){
+              var oC=document.getElementById('myCanvas');
+              var oCxt=oC.getContext('2d');
+
+             //设置canvas画布大小
+              oC.width=obj.width*3;
+              oC.height=obj.height;
+              //将上传的图片重绘到画板上
+              oCxt.drawImage(obj,0,0,obj.width/2,obj.height/2);
+             
+              var oImgData=oCxt.getImageData(0,0,obj.width/2,obj.height/2);
+              var oNewImageData=oCxt.createImageData(obj.width,obj.height);
+              var w=oImgData.width;
+              var h=oImgData.height;
+             
+             //num设定的是马赛克大小   
+               var num=size;
+            
+               var stepW=w/num;
+               var stepH=h/num;
+             
+                for(var i=0;i<stepH;i++){
+              	   for(var j=0;j<stepW;j++){
+                    var color=getXY(oImgData,j*num+Math.floor(Math.random()*num),i*num+Math.floor(Math.random()*num));
+                         for(var k=0;k<num;k++){
+                             for(var m=0;m<num;m++){
+                                    setXY(oNewImageData,j*num+m,i*num+k,color);   
+
+                             }
+
+                         }
+
+              	   }
+               }
+                     
+            oCxt.putImageData(oNewImageData,obj.width/2+50,0);       
+              
+			}
+//获取指定坐标位置的像素信息
+		function getXY(obj,x,y){
+           var w=obj.width;
+           var h=obj.height;  
+           
+           var color=[];        //存储指定位置的像素颜色；
+           color[0]=obj.data[4*(y*w+x)];
+           color[1]=obj.data[4*(y*w+x)+1];
+           color[2]=obj.data[4*(y*w+x)+2];
+           color[3]=obj.data[4*(y*w+x)+3];
+           return color;
+           
+		}
+  //设置像素信息
+		function setXY(obj,x,y,color){
+           var w=obj.width;
+           var h=obj.height;  
+       
+           obj.data[4*(y*w+x)]=color[0];
+           obj.data[4*(y*w+x)+1]=color[1];
+           obj.data[4*(y*w+x)+2]=color[2];
+           obj.data[4*(y*w+x)+3]=color[3];
+           
+           
+           
+		}
+
+
+
+      /**滑块组件**/
+
+      var slideBarElements = document.querySelectorAll('.slideBar');
+
+        for (var i=0; i<slideBarElements.length; i++) {
+            slideBar(slideBarElements[i]);
+        }
+
+      function slideBar(slideBarElement) {
+
+           var slider = slideBarElement.querySelector('.slider');
+           var sliderProcess = slideBarElement.querySelector('.sliderProcess');
+           var tips = slideBarElement.querySelector('.tips');
+
+           var maxValue = slideBarElement.offsetWidth - 10;
+
+           var min = Number(slideBarElement.getAttribute('min'));
+           var max = Number(slideBarElement.getAttribute('max'));
+
+           //刻度的数量
+           var num = max - min;
+           //每刻度的长度
+           var widthPer = slideBarElement.offsetWidth / num;
+
+           var value = min;
+
+           slider.onmousedown = function (e) {
+               var disX = e.clientX - this.offsetLeft;
+
+               tips.style.display = 'block';
+
+               document.onmousemove = function (e) {
+
+                   var L = e.clientX - disX;
+
+                   if (L < -10) {
+                       L = -10;
+                   } else if (L > maxValue) {
+                       L = maxValue;
+                   }
+
+                   slider.style.left = L + 'px';
+
+                   sliderProcess.style.width = L + 10 + 'px';
+                   /*
+                    * 90 + 10
+                    * -10 + 10 : 0
+                    * 90 + 10 : 1
+                    * */
+
+                   value = (L + 10) /  widthPer + min;
+                   tips.innerHTML =  Math.round(value);
+            
+               }
+
+               document.onmouseup = function() {
+                   document.onmousemove = null;
+
+                   slider.style.left = (Math.round(value) - min) * widthPer - 10 + 'px';
+
+                   tips.innerHTML =  Math.round(value);
+                   if(lastNum==Math.round(value)||!image){
+                      return;
+                   }else{
+                      lastNum=Math.round(value);
+                      draw(image,Math.round(value));
+                   }
+   
+                   sliderProcess.style.width = slider.offsetLeft + 10 + 'px';
+               }
+
+               return false;
+           }
+       }
+
+	 }
+	</script>
+</head>
+<body>
+    <div class="fileBtn">
+        <h1>在线打马赛克1.0</h1>
+        <input type="file" name="file"  id="file" accept="image/*"/> 
+    </div> 
+    <!--min,max分别设置刻度最大值，最小值-->
+    <div class="slideBar" min="1" max="32">
+        <div class="slider">
+            <div class="tips">0%</div>
+        </div>
+        <!-- 进度条-->
+        <div class="sliderProcess"></div>
+    </div>
+   
+   
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+</body>
+</html>

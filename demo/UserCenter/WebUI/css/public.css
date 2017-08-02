@@ -1,0 +1,174 @@
+﻿body{ background:url(../images/bg.jpg) repeat;}
+.navbar{ height:54px; border-top:#b93c28 3px solid; background-color:#f7f5f3; }
+.navbar .logo,.navbar .input-group{ margin-top:9px;}
+.navbar .container{ padding:0;}
+.box{ width:100%; height:3000px;}
+.content{ background:url(../images/cont_bg.png) repeat; background:rgba(96,50,49,0.3); padding-top:14px;}
+.input-group i{ cursor:pointer; position:absolute; right:5px; top:1px; z-index:99; color:#656565; font-size:24px; padding:0 6px; background-color:#fff; height:32px; line-height:31px; overflow:hidden;}
+.gn_nav_list li{text-align:right; margin-top:5px;}
+.gn_nav_list li .dropdown-menu li{ text-align:left;}
+.gn_nav_list li a i{ color:#545454; font-size:26px;}
+.gn_nav_list li a.home,.gn_nav_list li a.home i{ color:#b93c28;}
+.gn_nav_list li a em{ font:normal 18px/32px "微软雅黑";}
+.navbar .input-group input.form-control{ border-radius:5px;}
+.content {
+    padding-top: 53px;
+}
+.no-space {
+    margin:0;
+    padding:0;
+}
+.form-control {
+    box-shadow:none;
+}
+.btn {
+    box-shadow:none!important;
+}
+.btn.border {
+    border:1px solid #d0d0d0;
+}
+.btn.gray {
+    background:#f0f0f0;
+    color:#494949;
+}
+.btn.gray:hover,
+.btn.gray:link,
+.btn.gray:active {
+    background:#e7e7e7;
+}
+.btn.green {
+    background:#64c664;
+    color:#fff;
+}
+.btn.green:hover,
+.btn.green:link,
+.btn.green:active {
+    background:#5cb75c;
+}
+.btn.orange {
+    background:#da672e;
+    color:#fff;
+}
+.btn.orange:hover,
+.btn.orange:link,
+.btn.orange:active {
+    background:#ce612b;
+}
+.btn.icon i {
+    display:inline-block;
+    padding-right:5px;
+    margin-right:5px;
+    position:relative;
+}
+.btn.icon i:after {
+    content:'';
+    display:inline-block;
+    width:1px;
+    position:absolute;
+    right:0;
+    top:10%;
+    bottom:10%;
+    background:#d0d0d0;
+}
+.media .media-left {
+    padding-right:0;
+    margin-right:15px;
+}
+.column-comment .img-view {
+    margin-bottom:10px;
+    padding:15px 0;
+    padding-right:30%;
+}
+.column-comment .img-view.bgray {
+    padding:15px;
+    background:#ebebeb;
+}
+
+/*.img img {
+    width:100%;
+    max-width:100%;
+}*/
+
+.checker input {
+    margin:0;
+    position:relative;
+    top:2px;
+}
+.checker label {
+    margin-bottom:0;
+    margin-left:4px;
+    font-size:12px;
+    font-weight:400;
+    color:#808080;
+}
+.fc.blue {
+    color:#3b99fc;
+}
+a.line:hover {
+    text-decoration:underline;
+}
+#content { padding-bottom:20px;}
+@media screen and (max-width:768px) {
+    .container { min-width: 365px; }
+
+    .smallscream { margin: 0 15px; padding: 0 15px; }
+
+    .navbar .input-group input { opacity: 0; width: 0; }
+
+    .navbar .input-group i { background: none; font-size: 28px; position: absolute; left: 10px; right: initial; width: 35px; height: 30px; }
+
+    .navbar .clicks i.searchs { position: absolute; animation: s_click 1s ease; -webkit-animation: s_click 1s ease; left: initial; right: 10px; }
+
+    .navbar .clicks input { animation: click 0.7s ease-in-out; -webkit-animation: click 0.7s ease-in-out; opacity: 1; width: 100%; }
+    .bottom-link .link li{ padding:0 5px}
+
+    @keyframes s_click {
+        0% { opacity: 1; left: 10px; right: initial; }
+
+        30% { opacity: 0; left: 10px; right: initial; }
+
+        50% { opacity: 0; left: initial; right: 10px; }
+
+        80% { opacity: 0; left: initial; right: 10px; }
+
+        100% { opacity: 1; left: initial; right: 10px; }
+    }
+
+    @keyframes click {
+        0% { opacity: 0; width: 0px; }
+
+        10% { opacity: 1; width: 30px; }
+
+        100% { opacity: 1; width: 100%; }
+    }
+
+    @-webkit-keyframes s_click {
+        0% { opacity: 1; left: 10px; right: initial; }
+
+        30% { opacity: 0; left: 10px; right: initial; }
+
+        50% { opacity: 0; left: initial; right: 10px; }
+
+        80% { opacity: 0; left: initial; right: 10px; }
+
+        100% { opacity: 1; left: initial; right: 10px; }
+    }
+
+    @-webkit-keyframes click {
+        0% { opacity: 0; width: 0px; }
+
+        10% { opacity: 1; width: 30px; }
+
+        100% { opacity: 1; width: 100%; }
+    }
+
+    .shezhi i { color: #545454; font-size: 26px; margin-top: 9px; line-height: 31px; display: inline-block; }
+
+    .logo { text-align: center; position: relative; }
+
+    .logo i { color: #787878; cursor: pointer; }
+
+    .dropdown-menu { border: 0; }
+
+    .dropdown-menu li a { font-size: 14px; }
+}

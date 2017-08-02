@@ -1,0 +1,237 @@
+@color-base-bg: #292D48;
+@color-base-bg-clear: #433763;
+@color-alternate-bg: #4c5c96;
+
+@color-link: #33A9B7;
+@color-link-hover: #00E4FF;
+
+@-webkit-keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255, 255, 255, .1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255, 255, 255, .1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  &.major {
+    padding-bottom: 1em;
+    border-bottom: solid 2px rgba(255, 255, 255, 0.125);
+    margin-bottom: 20px;
+  }
+}
+
+a {
+  color: @color-link;
+  
+  &:hover, &:focus {
+    color: @color-link-hover;
+    text-decoration: none;
+  }
+}
+
+header {
+  
+  display: table;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: @color-base-bg;
+  background: -webkit-gradient(radial, center center, 0, center center, 500, from(@color-base-bg-clear), to(@color-base-bg));
+  background: -moz-radial-gradient(circle, @color-base-bg-clear, @color-base-bg);
+  background: -ms-radial-gradient(circle, @color-base-bg-clear, @color-base-bg);
+  color: white;
+  
+  #particles {
+    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .vert-text {
+    
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    
+    h1 {
+      
+      padding: 0;
+      margin: 0;
+      font-size: 4.5em;
+      font-weight: 700;
+    }
+    
+    .scroll-down {
+      display: block;
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      color: #fff;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      -webkit-transition: opacity 0.5s;
+      -o-transition: opacity 0.5s;
+      transition: opacity 0.5s;
+      
+      &:hover{
+        opacity: 0.5;
+      }
+      
+      &::after {
+        position: absolute;
+        content: '';
+        width: 16px;
+        height: 16px;
+        margin: -12px 0 0 -8px;
+        border-left: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        box-sizing: border-box;
+      }
+
+      &::before {
+        position: absolute;
+        top: -22px;
+        left: -22px;
+        z-index: -1;
+        content: '';
+        width: 44px;
+        height: 44px;
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, .1);
+        border-radius: 100%;
+        opacity: 0;
+        -webkit-animation: sdb 3s infinite;
+        animation: sdb 3s infinite;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+#about {
+  
+  padding: 50px 0;
+  background-color: #5e42a6;
+  color: white;
+  
+  .service-item {
+    margin-bottom: 15px;
+  }
+}
+
+.service-icon {
+  border: 2px solid rgba(255, 255, 255, 0.125);
+  border-radius: 50%;
+  font-size: 56px;
+  width: 140px;
+  height: 140px;
+  line-height: 136px;
+  vertical-align: middle;
+}
+
+#projects {
+  padding: 50px 0;
+  background-color: #312450;
+  color: white;
+  
+  .major {
+    border-bottom: solid 2px rgba(255, 255, 255, 0.125);
+  }
+  
+  .inner {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.25em;
+  }
+}
+
+#contacts {
+  
+  padding: 100px 0;
+  background-color: #493382;
+  color: white;
+  
+  .social {
+    padding-bottom: 20px;
+    border-bottom: solid 2px rgba(255, 255, 255, 0.125);
+  }
+}
+
+.project-item {
+  
+  width: 250px;
+  margin: 10px auto 20px auto;
+  padding: 10px 15px;
+  border: solid 1px rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0px 0px -5px #fff;
+  border-radius: 0.25em;
+  transition: all 0.5s ease;
+  
+  &:hover {
+    box-shadow: 0 5px 20px -5px #fff;
+  }
+  
+  .icon {
+    height: 128px;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+.navbar {
+  background-color: @color-link;
+  border-color: @color-base-bg;
+  &.navbar-default{
+    .navbar-brand {
+      color: white;
+    }
+    .navbar-nav>li>a {
+      color: white;
+    }
+    .navbar-toggle {
+      border-color: white;
+      
+      &:hover, &:focus {
+        background-color: @color-base-bg-clear;
+      }
+      
+      .icon-bar {
+        background-color: white;
+      }
+    }
+  }
+}

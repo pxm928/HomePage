@@ -1,0 +1,191 @@
+.ad-gallery {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.ad-gallery .ad-image-wrapper {
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.ad-gallery .ad-image-wrapper .ad-loader {
+    position: absolute;
+    z-index: 10;
+    top: 48%;
+    left: 48%;
+    border: 1px solid #CCC;
+}
+
+.ad-gallery .ad-image-wrapper .ad-next {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25%;
+    height: 100%;
+    cursor: url(pic_next.cur),auto;
+    display: block;
+    z-index: 100;
+}
+
+.ad-gallery .ad-image-wrapper .ad-prev {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25%;
+    height: 100%;
+    cursor: url(pic_prev.cur),auto;
+    display: block;
+    z-index: 100;
+}
+
+.ad-gallery .ad-image-wrapper .ad-prev, .ad-gallery .ad-image-wrapper .ad-next { /* Or else IE will hide it */
+    
+}
+
+.ad-gallery .ad-image-wrapper .ad-prev .ad-prev-image, .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
+    
+    width: 30px;
+    height: 30px;
+    display: none;
+    position: absolute;
+    top: 47%;
+    left: 0;
+    z-index: 101;
+}
+
+.ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
+    width: 30px;
+    height: 30px;
+    right: 0;
+    left: auto;
+}
+
+.ad-gallery .ad-image-wrapper .ad-image {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
+.ad-image img {
+    width:100%;
+    max-width:100%;
+}
+.ad-gallery .ad-image-wrapper .ad-image a img {
+    border: 0;
+}
+
+.ad-gallery .ad-image-wrapper .ad-image .ad-image-description {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding: 7px;
+    text-align: left;
+    width: 100%;
+    z-index: 2;
+    color: #000;
+}
+
+* html .ad-gallery .ad-image-wrapper .ad-image .ad-image-description {
+    background: none;
+}
+
+.ad-gallery .ad-image-wrapper .ad-image .ad-image-description .ad-description-title {
+    display: block;
+}
+
+.ad-gallery .ad-controls {
+    display:none;
+}
+
+.ad-gallery .ad-info {
+    float: left;
+}
+
+.ad-gallery .ad-slideshow-controls {
+    float: right;
+}
+
+.ad-gallery .ad-slideshow-controls .ad-slideshow-start, .ad-gallery .ad-slideshow-controls .ad-slideshow-stop {
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.ad-gallery .ad-slideshow-controls .ad-slideshow-countdown {
+    padding-left: 5px;
+    font-size: 0.9em;
+}
+
+.ad-gallery .ad-slideshow-running .ad-slideshow-start {
+    cursor: default;
+    font-style: italic;
+}
+
+.ad-gallery .ad-nav {
+    width: 100%;
+    position: relative;
+}
+
+.ad-gallery .ad-forward, .ad-gallery .ad-back {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 10;
+}
+
+
+.ad-gallery .ad-back {
+    cursor: pointer;
+    left: 0px;
+    width: 15px;
+    display: block;
+    background:url(nav-prev.png) no-repeat center;
+}
+
+.ad-gallery .ad-forward {
+    cursor: pointer;
+    display: block;
+    right: 0px;
+    width: 15px;
+    background:url(nav-next.png) no-repeat center;
+}
+
+.ad-gallery .ad-nav .ad-thumbs {
+    overflow: hidden;
+    margin:0 15px;
+}
+
+.ad-gallery .ad-thumbs .ad-thumb-list {
+    float: left;
+    width: 9000px;
+    list-style: none;
+}
+
+.ad-gallery .ad-thumbs li {
+    width:70px;
+    height:60px;
+    overflow:hidden;
+    float: left;
+}
+
+.ad-gallery .ad-thumbs li a {
+    display:block;
+    margin:0 5px;
+    border:1px solid #d9d9d9;
+    padding:2px;
+}
+.ad-gallery .ad-thumbs li a.ad-active {
+    padding:1px;
+    border:2px solid #e67966;
+}
+.ad-gallery .ad-thumbs li a img {
+    display: block;
+    width:100%;
+}
+
+.ad-preloads {
+    position: absolute;
+    left: -9000px;
+    top: -9000px;
+}

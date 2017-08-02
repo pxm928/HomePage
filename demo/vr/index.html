@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+body,
+html {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	background: url(bg.jpg) no-repeat;
+	background-size: auto 100%;
+}
+#box {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}	
+#div,
+#view,
+#z {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform-style: preserve-3d;
+}
+#div span {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -585px 0 0 -64.5px;
+	width: 129px;
+	height: 1170px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+</style>
+<script type="text/javascript" src="MTween.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var div = document.querySelector('#div');
+	setLayout();
+	setView();
+	window.addEventListener("orientation" in window?"orientationchange":"resize", function(e) {
+		setView();
+	});
+	setRotate(div);
+	toRotate();
+};	
+function setView(){
+	var box = document.querySelector('#box');
+	var view = document.querySelector('#view');
+	var z = document.querySelector('#z');
+	var deg = 57.5;
+	var R = Math.tan(deg*Math.PI/180)*box.offsetHeight/2;
+	box.style.WebkitPerspective = box.style.perspective = R + "px";
+	css(view,"translateZ",R);
+	css(z,"translateZ",-50);
+	/*
+		1. 固定视野夹角 ，反退出景深
+		2. 向前移动景物距离（和景深一致距离），让景物贴在眼前，保持景物和人之间距离是一致的
+		3. 同过z来调节 景物的前后位置;
+	*/
+}
+
+//deviceorientation 陀螺仪角度检测
+function toRotate(){
+	var div = document.querySelector('#div');
+	window.addEventListener('deviceorientation', function(e) {
+		var x = e.beta - 40;
+		var y = e.gamma + 90;
+		var z = e.alpha;
+		var lR = (y + z)%360;
+		css(div,"rotateX",x);
+		css(div,"rotateY",lR);
+	});	
+}
+function setLayout(){
+	var div = document.querySelector('#div');
+	var inner = "";
+	for(var i = 0; i < 20; i++){
+		inner += '<span style="background:url(bg/'+(i+1)+'.png)"></span>';
+	}
+	div.innerHTML = inner;
+}
+function setRotate(el){
+	var els = el.children;
+	var elW = els[0].offsetWidth;
+	var deg = 360/els.length;
+	var insetDeg = (180 - deg)/2; 
+	var R = Math.tan(insetDeg*Math.PI/180)*elW/2;
+	for(var i = 0; i < els.length; i++){
+		css(els[i],"rotateY",-i*deg);
+		css(els[i],"translateZ",-R);
+	}
+	css(el,"translateZ",-R);
+	css(el,"rotateX",0);
+	css(el,"rotateY",0);
+}
+</script>
+</head>
+<body>
+<div id="box">
+	<div id="view">
+		<div id="z">
+			<div id="div">
+				
+			</div>
+		</div>	
+	</div>	
+</div>
+</body>
+</html>

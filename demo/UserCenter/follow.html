@@ -1,0 +1,632 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--IOS中Safari允许全屏浏览-->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <!--IOS中Safari顶端状态条样式-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--忽略将数字变为电话号码-->
+    <meta content="telephone=no" name="format-detection">
+    <!--控制显示区域各种属性-->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <link href="WebUI/css/base.css" rel="stylesheet" />
+    <link href="WebUI/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="WebUI/css/iconfont.css" rel="stylesheet" />
+    <link href="WebUI/plugius/adgallery/jquery.ad-gallery.css" rel="stylesheet" />
+    <link href="WebUI/plugius/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="WebUI/css/public.css" rel="stylesheet" />
+    <link href="WebUI/css/index.css" rel="stylesheet" />
+    <script src="WebUI/js/html5shiv.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top" style="margin-bottom:53px;">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="row">
+                    <a href="index.html" class="logo col-lg-2 col-md-2  col-sm-3 hidden-xs">
+                        <img src="WebUI/images/logo.png" />
+                    </a>
+                    <div class="input-group col-lg-6 col-md-6  col-sm-5  hidden-xs" style="position:relative; float:left; margin-left:20px;">
+                        <input type="text" class="form-control" placeholder="搜索您想知道的" aria-describedby="basic-addon2">
+                        <i class="icon iconfont" onclick="window.location.href ='interiorSearch.html'; return false">&#xe609;</i>
+                    </div>
+                    <ul class="gn_nav_list col-lg-2 col-md-3 col-sm-3  hidden-xs pull-right">
+                        <li class="col-lg-7 col-md-6 col-sm-7">
+                            <a href="index.html" class="home">
+                                <i class="icon iconfont">&#xe608;</i>
+                                <em>首页</em>
+                            </a>
+                        </li>
+                        <li class="col-lg-5 col-md-5 col-sm-5 ">
+                            <div class="btn-group">
+                                <a href="javascript://" data-toggle="dropdown">
+                                    <i class="icon iconfont">&#xe607;</i>
+                                </a>
+                                <ul class="dropdown-menu" style="left:-78px; min-width:120px;">
+                                    <li><a href="#">个人信息</a></li>
+                                    <li><a href="#">注销</a></li>
+                                    <li><a href="#">退出</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="visible-xs smallscream">
+                        <div class="input-group col-xs-2" style="position:relative; float:left;">
+                            <input type="text" class="form-control" placeholder="搜索您想知道的" aria-describedby="basic-addon2">
+                            <i class="icon iconfont searchs">&#xe609;</i>
+                        </div>
+                        <div class="logo col-xs-8">
+                            <div class="btn-group">
+                                <img src="WebUI/images/logo.png" data-toggle="dropdown" />
+                                <i class="icon iconfont" data-toggle="dropdown">&#xe612;</i>
+                                <ul class="dropdown-menu" style="height: 200px; overflow: scroll; overflow-x: hidden; ">
+                                    <li><a href="index.html">首页</a></li>
+                                    <li><a href="collection.html">我的收藏</a></li>
+                                    <li><a href="message.html">我的评论</a></li>
+                                    <li><a href="#">我的留言</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">新闻公告</a></li>
+                                    <li><a href="#">电子资源</a></li>
+                                    <li><a href="#">调查问卷</a></li>
+                                    <li><a href="#">培训讲座</a></li>
+                                    <li><a href="#">新闻公告</a></li>
+                                    <li><a href="#">电子资源</a></li>
+                                    <li><a href="#">调查问卷</a></li>
+                                    <li><a href="#">培训讲座</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-2 shezhi">
+                            <div class="btn-group" style="width:100%">
+                                <a href="javascript://" data-toggle="dropdown">
+                                    <i class="icon iconfont pull-right">&#xe607;</i>
+                                </a>
+                                <ul class="dropdown-menu" style="left:-40px; min-width:120px;">
+                                    <li><a href="#">个人信息</a></li>
+                                    <li><a href="#">注销</a></li>
+                                    <li><a href="#">退出</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container content" id="content">
+        <div class="row">
+            <div class="left col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                <ul>
+                    <li class="lev_box">
+                        <a href="index.html">首页</a>
+                    </li>
+                    <li class="lev_box">
+                        <a href="collection.html">我的收藏</a>
+                        <em class="w_new_count">23</em>
+                    </li>
+                    <li class="lev_box ff">
+                        <a href="message.html">我的评论</a>
+                    </li>
+                    <li class="lev_box">
+                        <a href="message.html">我的留言</a>
+                    </li>
+                    <li class="lev_line">
+                        <fieldset>
+                            <legend>
+                                <i class="icon iconfont">&#xe607;</i>
+                            </legend>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <div class="lev_box" id="lev_box">
+                            <div class="scroll ks" id="scroll">
+                                <ul>
+                                    <li class="lev">
+                                        <i class="icon iconfont dian"></i>
+                                        <i class="icon iconfont zhiding" title="置顶"></i>
+                                        <a href="javascript://">新闻公告</a>
+                                    </li>
+                                    <li class="lev">
+                                        <i class="icon iconfont dian"></i>
+                                        <i class="icon iconfont zhiding" title="置顶"></i>
+                                        <a href="javascript://">电子资源</a>
+                                    </li>
+                                    <li class="lev">
+                                        <i class="icon iconfont dian"></i>
+                                        <i class="icon iconfont zhiding" title="置顶"></i>
+                                        <a href="javascript://">调查问卷</a>
+                                    </li>
+                                    <li class="lev">
+                                        <i class="icon iconfont dian"></i>
+                                        <i class="icon iconfont zhiding" title="置顶"></i>
+                                        <a href="javascript://">培训讲座</a>
+                                    </li>
+                                    <li class="lev">
+                                        <i class="icon iconfont dian"></i>
+                                        <i class="icon iconfont zhiding" title="置顶"></i>
+                                        <a href="javascript://">服务指南</a>
+                                    </li>
+                                    <li class="lev">
+                                        <i class="icon iconfont dian"></i>
+                                        <i class="icon iconfont zhiding" title="置顶"></i>
+                                        <i class="icon iconfont dangqian">&#xe636;</i>
+                                        <a href="javascript://">新书通报</a>
+                                    </li>
+                                    <li class="lev">
+                                        <i class="icon iconfont dian"></i>
+                                        <i class="icon iconfont zhiding" title="置顶"></i>
+                                        <i class="icon iconfont dangqian">&#xe636;</i>
+                                        <a href="javascript://">新书通报</a>
+                                    </li>
+                                    <li class="lev">
+                                        <i class="icon iconfont dian"></i>
+                                        <i class="icon iconfont zhiding" title="置顶"></i>
+                                        <i class="icon iconfont dangqian">&#xe636;</i>
+                                        <a href="javascript://">新书通报</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul style="display:none;" class="moreList">
+                                <li class="lev">
+                                    <i class="icon iconfont dian"></i>
+                                    <i class="icon iconfont zhiding" title="置顶"></i>
+                                    <a href="javascript://">新闻公告</a>
+                                </li>
+                                <li class="lev">
+                                    <i class="icon iconfont dian"></i>
+                                    <i class="icon iconfont zhiding" title="置顶"></i>
+                                    <a href="javascript://">电子资源</a>
+                                </li>
+                                <li class="lev">
+                                    <i class="icon iconfont dian"></i>
+                                    <i class="icon iconfont zhiding" title="置顶"></i>
+                                    <a href="javascript://">调查问卷</a>
+                                </li>
+                                <li class="lev">
+                                    <i class="icon iconfont dian"></i>
+                                    <i class="icon iconfont zhiding" title="置顶"></i>
+                                    <a href="javascript://">培训讲座</a>
+                                </li>
+                                <li class="lev">
+                                    <i class="icon iconfont dian"></i>
+                                    <i class="icon iconfont zhiding" title="置顶"></i>
+                                    <a href="javascript://">服务指南</a>
+                                </li>
+                                <li class="lev">
+                                    <i class="icon iconfont dian"></i>
+                                    <i class="icon iconfont zhiding" title="置顶"></i>
+                                    <i class="icon iconfont dangqian">&#xe636;</i>
+                                    <a href="javascript://">新书通报</a>
+                                </li>
+                            </ul>
+                            <p class="lev_more">展开</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="middle col-lg-7  col-md-10 col-sm-9">
+                <div class="column column-comment">
+                    <div class="column-body clearfix">
+                        <ul class="tab_ul follow">
+                            <li class="e">
+                                <a href="javascript://">全部关注</a>
+                                <em class="attach">103</em>
+                                <span></span>
+                            </li>
+                            <li>
+                                <a href="javascript://">未关注</a>
+                                <em class="attach">103</em>
+                                <span></span>
+                            </li>
+                            <li>
+                                <a href="javascript://">已关注</a>
+                                <em class="attach">103</em>
+                                <span></span>
+                            </li>
+                        </ul>
+                        <div class="w_fl pull-left margin-top-10">
+                            <a class="btn_first" href="javascript://">批量管理</a>
+                            <a class="btn_link" href="javascript://" style="display:none;">取消关注</a>
+                            <a class="btn_link exit" href="javascript://" style="display:none;">退出批量操作</a>
+                        </div>
+                        <div class="input-group hidden-sm hidden-xs margin-top-10 pull-left" style="position:relative;">
+                            <input type="text" class="form-control" placeholder="搜索您要关注的人" aria-describedby="basic-addon2">
+                            <i class="icon iconfont">&#xe609;</i>
+                        </div>
+                        <div class="btn-group pull-right" style="position:relative;line-height:45px;">
+                            <a data-toggle="dropdown">选择站点</a>
+                            <i class="icon iconfont" data-toggle="dropdown" style="padding-left:10px;">&#xe612;</i>
+                            <ul class="dropdown-menu" style="height: 200px; overflow: scroll; overflow-x: hidden; ">
+                                <li><a href="#">新闻公告</a></li>
+                                <li><a href="#">电子资源</a></li>
+                                <li><a href="#">调查问卷</a></li>
+                                <li><a href="#">培训讲座</a></li>
+                                <li><a href="#">新闻公告</a></li>
+                                <li><a href="#">电子资源</a></li>
+                                <li><a href="#">调查问卷</a></li>
+                                <li><a href="#">培训讲座</a></li>
+                            </ul>
+                        </div>
+                        <div style="clear:both"></div>
+                        <ul class="member_ul clearfix">
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                            <li class="col-lg-6 col-md-4  col-sm-6 col-xs-12">
+                                <div class="member_wrap clearfix">
+                                    <div class="mod_pic S_line1">
+                                        <p class="pic_box">
+                                            <a href="javascript://"><img src="WebUI/images/new-img-blue.png" /></a>
+                                        </p>
+                                    </div>
+                                    <div class="mod_info">
+                                        <h3><a href="javascript://">新闻公告</a></h3>
+                                        <span>门户栏目关注<a href="javascript://"><i class="iconfont lianjie">&#xe613;</i></a></span>
+                                        <p>已关注</p>
+                                        <div class="opt">
+                                            <p class="btn_bed">
+                                                <a class="W_btn_b">取消关注</a>
+                                                <a class="W_btn_b padding0"><i class="iconfont lianjie">&#xe605;</i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="markup_choose"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:;" class="slide-hand" id="slideHand" style="z-index:999">
+                <i class="icon iconfont" style="display:block;">&#xe600;</i>
+                <i class="icon iconfont" style="display:none;">&#xe602;</i>
+            </a>
+            <div class="right fixed-middle col-xs-3" id="right">
+                <div class="inside">
+                    <div class="user">
+                        <div class="media info">
+                            <span class="img media-left pull-left"><img src="WebUI/images/user/user.jpg" width="64" height="64" /></span>
+                            <div class="media-body">
+                                <h3>芝麻爱上蚂蚁&nbsp;<span class="iconfont nan">&#xe60a;</span><span class="iconfont nv">&#xe60b;</span></h3>
+                                <p>
+                                    学生 YN16787<br />
+                                    计算机应用学院
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="atten margin-top-10 clearfix">
+                            <li>
+                                <a href="follow.html">
+                                    <strong>45</strong>
+                                    <span>关注</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <strong>45</strong>
+                                    <span>借阅</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="collection.html">
+                                    <strong>45</strong>
+                                    <span>收藏</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column margin-top-20">
+                        <h2>电子资源</h2>
+                        <div class="column-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><span class="badge">15k</span><a href="javascript://">CNKI中文期刊全文数据库</a></li>
+                                <li class="list-group-item"><span class="badge">15k</span><a href="javascript://">万方数据资源系统</a></li>
+                                <li class="list-group-item"><span class="badge">15k</span><a href="javascript://">维普中文科技期刊数据库</a></li>
+                                <li class="list-group-item"><span class="badge">15k</span><a href="javascript://">国务院发展研究中心信息网</a></li>
+                                <li class="list-group-item"><span class="badge">15k</span><a href="javascript://">上海教育网络图书馆</a></li>
+                                <li class="list-group-item"><span class="badge">15k</span><a href="javascript://">超星120万册图书</a></li>
+                                <li class="list-group-item"><span class="badge">15k</span><a href="javascript://">中国高校人文社会科学文献中心</a></li>
+                                <li class="list-group-item"><span class="badge">15k</span><a href="javascript://">读秀知识库和Medalink</a></li>
+                            </ul>
+                            <a class="btn btn-block text-center more">查看更多 <i>&gt;</i></a>
+                        </div>
+                    </div>
+                    <div class="column margin-top-20">
+                        <h2>借阅信息</h2>
+                        <div class="column-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><span class="badge">12天到期</span><a href="javascript://">《钢铁是怎样练成的》</a></li>
+                                <li class="list-group-item"><span class="badge">43天到期</span><a href="javascript://">《平行宇宙》</a></li>
+                                <li class="list-group-item alarm"><span class="badge">5天到期</span><a href="javascript://">《灰霾来了怎么办》</a></li>
+                                <li class="list-group-item"><span class="badge">13天到期</span><a href="javascript://">《零伯爵》</a></li>
+                                <li class="list-group-item"><span class="badge">16天到期</span><a href="javascript://">《百年孤独》</a></li>
+                                <li class="list-group-item"><span class="badge">19天到期</span><a href="javascript://">《偷影子的人》</a></li>
+                            </ul>                                                              <a href="javascript://">
+                                <a class="btn btn-block text-center more">查看更多 <i>&gt;</i></a>
+                        </div>
+                    </div>
+                    <div class="column margin-top-20">
+                        <h2>借阅信息</h2>
+                        <div class="column-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><span class="badge">12天到期</span><a href="javascript://">《钢铁是怎样练成的》</a></li>
+                                <li class="list-group-item"><span class="badge">43天到期</span><a href="javascript://">《平行宇宙》</a></li>
+                                <li class="list-group-item alarm"><span class="badge">5天到期</span><a href="javascript://">《灰霾来了怎么办》</a></li>
+                                <li class="list-group-item"><span class="badge">13天到期</span><a href="javascript://">《零伯爵》</a></li>
+                                <li class="list-group-item"><span class="badge">16天到期</span><a href="javascript://">《百年孤独》</a></li>
+                                <li class="list-group-item"><span class="badge">19天到期</span><a href="javascript://">《偷影子的人》</a></li>
+                            </ul>
+                            <a class="btn btn-block text-center more">查看更多 <i>&gt;</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="WebUI/js/jquery-1.9.1.min.js"></script>
+    <script src="WebUI/js/bootstrap.min.js"></script>
+    <script src="WebUI/plugius/adgallery/jquery.ad-gallery.js"></script>
+    <script src="WebUI/plugius/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="WebUI/js/animate.js"></script>
+    <script src="WebUI/js/respond.src.js"></script>
+    <script>
+        (function ($) {
+            $(window).load(function () {
+                /* custom scrollbar fn call */
+                $("#right,#scroll").mCustomScrollbar({
+                    autoHideScrollbar: true,
+                    scrollInertia: 150,
+                    theme: "dark-org"
+                });
+            });
+        })(jQuery);
+        $(function () {
+            var comt = $(".column-comment").each(function () {
+                var ths = $(this);
+                var comlik = ths.find(".com-link");
+                var cominfo = ths.find(".comment");
+                comlik.children("a").click(function () {
+                    if (cominfo.hasClass("hide")) {
+                        comlik.addClass("active");
+                        cominfo.removeClass("hide");
+                    } else {
+                        comlik.removeClass("active");
+                        cominfo.addClass("hide");
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

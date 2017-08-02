@@ -1,0 +1,146 @@
+﻿
+.content {
+    padding-top:68px;
+    background:no-repeat;
+}
+.user {
+    background:#fff;
+    border-radius:4px;
+    overflow:hidden;
+}
+.user-title {
+    
+    padding:10px 15px;
+    border-bottom:3px solid #c13f2a;
+}
+.user-title h2 {
+    padding-top:3px;
+    font-size:14px;
+    font-weight:400;
+    margin:0;
+}
+.user-body .form-group {
+    position:relative;
+}
+.user-body .form-group .form-control {
+    padding-left:50px;
+}
+.user-body .form-group .control-label {
+    position:absolute;
+    left:10px;
+    top:0;
+    line-height:34px;
+    height:34px;
+}
+.form-horizontal .control-label{ padding:0;}
+.jumbotron {
+    background:none;
+}
+.login .jumbotron {
+    padding:20px 0 10px;
+    margin-bottom:0;
+    color:#461e0a;
+}
+.login .jumbotron h1 {
+    font-size:36px;
+}
+.login .jumbotron h2 {
+    font-size:24px;
+}
+
+.login-note, .login .form-body {
+    min-height:360px;
+    border-radius:4px;
+    overflow:hidden;
+}
+.login .form-body {
+    padding:10px 45px;
+    margin-left:auto;
+    margin-right:auto;
+    background:#fff;
+}
+.login .form-body .img-title {
+    padding:8px 0 16px;
+}
+.login .form-body .note {
+    font-size:12px;
+    color:#b1b1b1;
+}
+.login .form-body .save-type {
+    font-size:12px;
+}
+.login-note {
+    min-width:2px;
+    padding-left:500px;
+    padding-top:40px;
+    color:#fff;
+    background:#fff url(../images/login-adimg.png) no-repeat left 40px;
+}
+.login-note h3 {
+    margin-top:30px;
+    font-size:30px;
+}
+.login-note p {
+    font-size:22px;
+    font-weight:100;
+    line-height:1.8;
+}
+
+@media (max-width: 767px) {
+    .login-note {
+        min-width:2px;
+        padding-left:300px;
+        padding-top:40px;
+        color:#fff;
+        background:#fff url(../images/login-adimg.png) no-repeat -58px 40px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .login-note {
+        min-width:2px;
+        padding-left:300px;
+        padding-top:40px;
+        color:#fff;
+        background:#fff url(../images/login-adimg.png) no-repeat -58px 40px;
+    }
+    .login-box {
+        background:#fff;
+        border-radius:4px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .login-note {
+        min-width:2px;
+        padding-left:420px;
+        padding-top:40px;
+        color:#fff;
+        background:#fff url(../images/login-adimg.png) no-repeat -48px 40px;
+    }
+}
+@media (min-width: 1200px) {
+    .login-note {
+        min-width:2px;
+        padding-left:500px;
+        padding-top:40px;
+        color:#fff;
+        background:#fff url(../images/login-adimg.png) no-repeat left 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .user-body {
+        padding:10px 20px;
+    }
+    .user-head {
+        padding-bottom:10px;
+        text-align:center;
+    }
+}
+@media (min-width: 992px){
+    .user-body {
+        padding:20px 120px;
+    }
+    .user-head {
+        text-align:right;
+    }
+}

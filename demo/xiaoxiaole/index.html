@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html {
+            overflow: hidden;
+        }
+        body{
+            background: #333;
+
+        }
+        #box {
+            margin: 100px auto;
+            position: relative;
+            background: black;
+            overflow: hidden;
+        }
+        #box div.box {
+            width: 48px;
+            height: 48px;
+            border-radius: 15px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor:pointer;
+        }
+        .duang {
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script src="animation.js"></script>
+    <script>
+        var box = document.querySelector('#box');
+
+        //行
+        var rows = 10;
+        //列
+        var cols = 10;
+        //颜色数组
+        var colors = 'red,blue,green,yellow,purple'.split(',');
+        //用来保存所有的.box，并且是以列的形式进行存储的
+        var boxes = [];
+
+        //计算#box的宽度
+        box.style.width = cols * 50 + 'px';
+        box.style.height = rows * 50 + 'px';
+
+        //根据rows和cols来生成对应的.box
+        for (var i=0; i<cols; i++) {
+
+            boxes[i] = [];
+
+            for (var j=0; j<rows; j++) {
+
+                var bgColor = colors[ parseInt(Math.random() * colors.length) ];
+                box.innerHTML += `<div class="box" style="background: ${bgColor}"></div>`;
+
+            }
+
+        }
+
+        //把一位boxElements存成二维的boxes
+        var boxElements = box.querySelectorAll('.box');
+//        console.log(boxElements);
+        for (var i=0; i<boxElements.length; i++) {
+            //每10列重头开始
+            boxes[i % cols].push(boxElements[i]);
+        }
+
+        QTan();
+
+        var rs = [];
+        boxes.forEach(function(arr, cell) {
+            arr.forEach(function(element, row) {
+
+                element.onclick = function() {
+
+                    // 点击的时候，判断当前点击的元素在 rs 中是否存在
+
+                    if (rs.includes( this )) {
+                        //当前点击的元素是rs中已有元素，那就删除
+//                        alert('删除');
+
+                        var arrDel = [];
+
+                        for (var i=0; i<rs.length; i++) {
+                            arrDel.push( [rs[i].col, rs[i].cell] )
+                        }
+
+                        deleteBox(arrDel);
+                        rs = [];
+                    } else {
+                        for (var i=0; i<rs.length; i++) {
+                            rs[i].style.border = '';
+                        }
+
+                        console.log(this.col, this.cell);
+                        rs = getSiblings(this.col, this.cell);
+
+                        for (var i=0; i<rs.length; i++) {
+                            rs[i].style.border = '2px solid white';
+                        }
+                    }
+
+                }
+
+            })
+        });
+
+//        getSiblings(0, 1)
+//            result = [ [0,1] ]
+//            getSiblings(0, 0, [ [0,1] ])
+//                result = [ [0,1], [0,0] ]
+
+        function getSiblings(cell, row, result) {
+
+            //保存找到满足要求的元素
+            var result = result || [];
+
+            //能调用该方法就表示当前这个坐标所表示的元素是满足要求的，那么就把这个对应的元素找到，然后添加到result中
+            var currentElement = boxes[cell][row];
+            result.push( currentElement );
+
+            //我们在找当前元素的兄弟元素的时候：1.颜色是一致  2.是否已经被保存过
+
+            //找上一个元素
+            if (row > 0) {
+                var topElement = boxes[cell][row - 1];
+                //判断当前这个元素和topElement是否是一致的
+                if (topElement && topElement.style['background-color'] == currentElement.style['background-color']) {
+                    //topElement是否已经被选择过
+                    if (!result.includes(topElement)) {
+                        result = getSiblings(cell, row - 1, result);
+                    }
+                }
+            }
+
+            if (row < rows - 1) {
+                var bottomElement = boxes[cell][row + 1];
+                //判断当前这个元素和bottomElement是否是一致的
+                if (bottomElement && bottomElement.style['background-color'] == currentElement.style['background-color']) {
+                    //bottomElement是否已经被选择过
+                    if (!result.includes(bottomElement)) {
+                        result = getSiblings(cell, row + 1, result);
+                    }
+                }
+            }
+
+            if (cell > 0) {
+                var leftElement = boxes[cell - 1][row];
+                //判断当前这个元素和leftElement是否是一致的
+                if (leftElement && leftElement.style['background-color'] == currentElement.style['background-color']) {
+                    //leftElement是否已经被选择过
+                    if (!result.includes(leftElement)) {
+                        result = getSiblings(cell - 1, row, result);
+                    }
+                }
+            }
+
+            if (cell < cols - 1) {
+                var rightElement = boxes[cell + 1][row];
+                //判断当前这个元素和rightElement是否是一致的
+                if (rightElement && rightElement.style['background-color'] == currentElement.style['background-color']) {
+                    //rightElement是否已经被选择过
+                    if (!result.includes(rightElement)) {
+                        result = getSiblings(cell + 1, row, result);
+                    }
+                }
+            }
+
+
+            return result;
+        }
+
+        //通过二维数组设置元素的left和top
+        //列
+        function QTan() {
+            for (var i=0; i<boxes.length; i++) {
+                for (var j=0; j<boxes[i].length; j++) {
+
+                    boxes[i][j].col = i;
+                    boxes[i][j].cell = j;
+
+                    if (boxes[i][j]) {
+                        animation(boxes[i][j], {
+                            left: i * 50,
+                            top: j * 50
+                        }, 800, 'bounceOut')
+                    }
+
+                }
+            }
+        }
+
+        //deleteBox([
+        //  [0,3],[0,4],[0,5],[2,5],[2,6],[4,1],[4,2],[7,8],[7,9]
+        //]);
+        function deleteBox(arr) {
+
+            function fn() {
+                setTimeout(function() {
+
+                    var pos = arr.shift();
+                    var x = pos[0]; //列
+                    var y = pos[1]; //行
+
+                    if (boxes[x][y]) {
+
+                        //10个星星
+                        for (var j=0;j<10; j++) {
+                            duang(boxes[x][y].offsetLeft + boxes[x][y].offsetWidth / 2, boxes[x][y].offsetTop + boxes[x][y].offsetHeight / 2);
+                        }
+
+                        box.removeChild(boxes[x][y]);
+                    }
+
+                    boxes[x][y] = '';
+
+                    if (arr.length) {
+                        fn();
+                    } else {
+                        for (var i=0; i<boxes.length; i++) {
+                            for (var j=0; j<boxes[i].length; j++) {
+                                if (boxes[i][j] == '') {
+                                    boxes[i].splice(j,1);
+                                    boxes[i].unshift('');
+                                }
+                            }
+                        }
+                        QTan();
+                    }
+
+                }, 80);
+            }
+
+            fn();
+
+//            console.log(boxes);
+
+////            console.log(boxes);
+//            QTan();
+        }
+
+
+        function duang(x, y) {
+            var duangBox = document.createElement('div');
+            duangBox.className = 'duang';
+            box.appendChild(duangBox);
+
+            duangBox.innerHTML = '★';
+
+            duangBox.style.width = Math.random() * 5 + 5 + 'px';
+            duangBox.style.height = Math.random() * 5 + 5 + 'px';
+
+            duangBox.style.fontSize = '20px';
+
+            duangBox.style.left = x - duangBox.offsetWidth / 2 + 'px';
+            duangBox.style.top = y - duangBox.offsetHeight / 2 + 'px';
+
+            var colors = 'red,blue,green,orange,pink,black,purple'.split(',');
+            colors.sort(function() {
+                return Math.random() - 0.5;
+            });
+            duangBox.style.color = colors[0];
+
+            var speedX = Math.random() * 20 - 10;
+            var speedY = -(Math.random() * 10 + 5);
+
+            duangBox.timer = setInterval(function() {
+                duangBox.style.left = duangBox.offsetLeft + speedX + 'px';
+                duangBox.style.top = duangBox.offsetTop + speedY + 'px';
+                speedY += 1;
+
+                if (duangBox.offsetTop + duangBox.offsetHeight > document.documentElement.clientHeight) {
+                    clearInterval(duangBox.timer);
+                    box.removeChild(duangBox);
+                    duangBox = null;
+                }
+
+            }, 30)
+        }
+    </script>
+</body>
+</html>
